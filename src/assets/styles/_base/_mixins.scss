@@ -1,0 +1,61 @@
+@mixin text-overflow() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin position($xy:'', $position:absolute, $top:initial, $right:initial, $bottom:initial, $left:initial) {
+  z-index: 1;
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  @if ($xy=='x') {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if ($xy=='y') {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @else if ($xy=='xy') {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin flexCenter(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexSpaceBetweenCenter(){
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flexSpaceBetween(){
+  display: flex;
+  justify-content: space-between;
+}
+@mixin flexWrap(){
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@mixin btn($padding, $radius, $font-size, $bg, $color){
+  padding: $padding;
+  border-radius: $radius;
+  font-size: $font-size;
+  background-color: $bg;
+  color: $color;
+  cursor: pointer;
+}
+
+@mixin sprite($w, $h, $bg-pos) {  
+  width: $w;
+  height: $h;
+  background-position: $bg-pos;
+}

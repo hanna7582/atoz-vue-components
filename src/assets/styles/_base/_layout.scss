@@ -1,0 +1,287 @@
+.top-nav{
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: $top-nav-h;
+  background: $primary;
+  h1{
+    padding: 0 $remD5;
+    color: $white;
+    a{display: inline-block;}
+    img{
+      height: 40px;
+      vertical-align: top;
+    }
+  }
+  ul{
+    display: flex;
+  }
+  li a{
+    padding: $remD5;
+    font-size: $remD8;
+    color: $white;
+    opacity: .7;
+    text-transform: capitalize;
+    &.router-link-active{
+      opacity: 1;
+    }
+  }
+  .theme{
+    @include position($xy:'y', $right: $remD5);
+    color: $white;
+    label{
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      width: 30px;
+      height: 14px;
+      margin: 0 $remD5;
+      border-radius: 9px;
+      border: 2px solid $sub;
+      cursor: pointer;
+    }
+    &-btn{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-left: 2px;
+      border-radius: 50%;
+      background-color: $sub;
+      transition: .5s;
+    }
+    &-bg{
+      @include position($xy:'', $top:0, $right:0, $bottom:0, $left:0);
+      z-index: -1;
+      background: $white;
+      transition: .5s;
+    }
+
+    input:checked + .theme-btn{
+      margin-left:18px;
+    }
+    input:checked ~ .theme-bg{
+      background: $dark;
+    }
+  }
+}
+
+.container{
+  padding-top: $top-nav-h;
+}
+
+// side-nav ==========================================================================
+.side-nav{
+  position: fixed;
+  z-index: 100; 
+  width: $side-nav-w;
+  top: $top-nav-h;
+  bottom: 0;
+  box-sizing: border-box;
+  border-right: $border;
+  background: $white;
+  
+  .search {
+    position: relative;
+    display: flex;
+    padding: $remD6;
+    border-bottom: $border;
+    input {
+      width: 100%;
+      outline: none;
+      &:focus {
+        box-shadow: 0 0 3px 3px $light-orange;
+      }
+    }
+    .text__highlight {
+      background-color: $light-green;
+      color: $green;
+      padding: 0.1em;
+    }
+    .auto-complete {
+      @include position($top:100%, $left:$remD6);
+      width: 300px;
+      z-index: 1;
+      background-color: $white;
+      border: $border;
+      border-radius: $remD25;
+      li {
+        display: flex;
+        padding: $remD5;
+        font-size: $remD7;
+        cursor: pointer;
+        &:hover {
+          background-color: $light;
+        }
+        &.active {
+          background-color: $light-orange;
+        }
+        &.auto-title {
+          cursor: auto;
+          color: $primary;
+          font-weight: bold;
+          font-size: $rem1;
+          &:hover {
+            background-color: $transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &-list{
+    overflow-y:auto;
+    height: calc(100% - 50px);
+    padding: $remD6;
+    box-sizing: border-box;
+    li{
+      line-height: $rem2;
+    }
+    a{
+      @include flexSpaceBetweenCenter();
+    }
+    .depth1 > li > a{
+      color:$primary;
+      text-transform: capitalize;
+    }
+    .depth1 > li > a.router-link-active{
+      font-weight: bold;
+    }
+    .depth1 > li > a.router-link-active svg{
+      transform: rotate(180deg);
+    }
+    .depth2 {
+      display: none;
+      margin-left:$remD7;
+    }
+    .depth1 > li > a.router-link-active + .depth2{
+      display: block;
+    }
+    .depth2 > li > a{
+      font-size: $remD9;
+      &.router-link-active{
+        font-weight: 600;
+      }
+    }
+    .depth3 {
+      margin-left:$remD7;
+    }
+    .depth3 > li > a{
+      font-size: $remD8;
+      opacity: .7;
+      &.router-link-active{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// views ==========================================================================
+.views{
+  padding: $rem2;
+  margin-left: $side-nav-w;
+  > h1{
+    color:$primary;
+    span{
+      color:$gray;
+      font-size: $rem1;
+      font-weight: normal;
+    }
+  }
+}
+
+.contents{
+  padding: $rem1D2 0;
+  &-tab {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $remD6;
+    .btn {
+      background: $transparent;
+      color: $gray;
+      &.active {
+        background: $sub;
+        color: $white;
+      }
+    }
+  }
+  &-main {
+    @include flexSpaceBetween();
+    .row{
+      width: 100%;
+      margin-bottom: $rem1
+    }
+  }
+  &-description {
+  
+  }
+} 
+.img-group{
+  @include flexWrap();
+  img{
+    margin:1rem;
+  }
+}
+.chart, .example{
+  position: relative;
+  width: 50%;
+  border: $border;
+  border-radius: $remD25;
+  padding: 20px;
+  background: $white;
+  color: $gray-dark;
+  box-sizing: border-box;
+  &-container {
+    width: 100%;
+    height: 100%;
+  }
+}
+.data-editor {
+  width: calc(50% - 1rem);
+  position: relative;
+  .btn-group{
+    @include position($right:0, $top:4px);
+    .btn{
+      margin-left: $remD25;
+    }
+  }
+}
+
+.table{
+  border-collapse: collapse;
+  border-bottom: 1px solid $gray-dark;
+  font-size: $remD8;
+  th, td{
+    border-top: 1px solid $gray-dark;
+  }
+  th, .th{
+    background: $light-gray;
+    padding: $remD5;
+    text-align: center;
+    font-weight: bold;
+  }
+  td{
+    padding: $remD5;
+  }
+  thead, tfoot{
+    background: $light-gray;
+  }
+}
+.paging{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: $remD5;
+  a{
+    display: inline-block;
+    width: 24px;
+    height: 28px;
+    line-height: 24px;
+    text-align: center;
+  }
+  .on a{
+    color: $primary;
+  }
+}

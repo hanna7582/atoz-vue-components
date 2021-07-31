@@ -1,0 +1,9 @@
+// https://stackoverflow.com/questions/47181037/vscode-intellisense-does-not-work-with-webpack-alias
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+}

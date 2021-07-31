@@ -1,0 +1,39 @@
+.md{
+  margin: $remD7 0;
+  h1, h2, h3, h4, h5, h6{ padding: $rem2 0 $remD5; color: $sub; }
+  a{ text-decoration: underline; }
+  strong{ display: block; padding: $rem1 0 $remD5; }
+  ul{ padding: 0 0 $remD5;}
+  li{ margin-left: $rem1D5; line-height: $rem1D5; list-style: disc; font-size: $remD9; }
+  table{ width: 100%;  border-collapse: collapse; }
+  th, td{ padding: $rem1D2;}
+  th{ border-bottom: $border-l; }
+  td{ border-bottom: $border; border-right: $border; }
+  td:last-child{ border-right: 0; }
+  .btn-toggle-code{ 
+    float: right; outline: none; cursor: pointer;
+    @include btn($remD5, $remD25 $remD25 0 0, $remD8, $night, $white);
+    margin:$remD5 $remD5 0 0;
+    &::after{
+      content: '';
+      display: inline-block;
+      margin-left:5px;
+      border-bottom: 5px solid $white;
+      border-right: 5px solid $transparent;
+      border-left: 5px solid $transparent;
+      border-top: 0;
+    }
+    &.hidden{ 
+      background: $sub; color:$white; 
+      &::after{
+        border-top: 5px solid $white;
+        border-right: 5px solid $transparent;
+        border-left: 5px solid $transparent;
+        border-bottom: 0;
+      }
+    }
+  }
+  pre{ clear: both; border-bottom: $border;}
+  pre, code{ line-height: $rem1D5; font-family: 'Nanum Gothic', sans-serif; font-size: $remD9;}
+  .hljs{ border-radius: $remD25;}
+}

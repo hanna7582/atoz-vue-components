@@ -1,0 +1,17 @@
+.jsoneditor{
+  border-radius: $remD25;
+  border-color: $sub !important;
+  background: $white;
+  &-box{
+    height: calc(100% - 40px) !important;
+    padding-top: 40px;
+  }
+  &-menu{
+    background-color: $sub !important;
+    border-bottom-color: $sub !important;
+  }
+  input{
+    background: $white !important;
+    color: $black !important;
+  }
+}

@@ -1,0 +1,23 @@
+.btn{
+  @include btn($remD5, $remD25, $remD8, $dark, $white);
+  cursor: pointer;
+  outline: none;
+  &-primary{
+    background-color: $primary;
+  }
+  &-sub{
+    background-color: $sub;
+  }
+  &-top{
+    @include position($position:fixed, $right:$rem1, $bottom:$rem1);
+    z-index: 1000;
+    width: $rem2;
+    height: $rem2;
+    transition: .5s;
+    opacity: .5;
+    &.hidden{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
