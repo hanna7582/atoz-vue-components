@@ -1,17 +1,26 @@
 <template>
   <section class="views">
     <h2>DashBoard</h2>
-    <div class="contents">
-      <h3>Components</h3>
-      <div class="img-group">
-        <img src="https://via.placeholder.com/400x300" alt="" />
-        <img src="https://via.placeholder.com/400x300" alt="" />
-        <img src="https://via.placeholder.com/400x300" alt="" />
-        <img src="https://via.placeholder.com/400x300" alt="" />
-      </div>
-    </div>
-    <div class="contents">
-      <h3>Templates</h3>
+    <p>vue에서 사용하는 컴포넌트와 다양한 레이아웃을 제공합니다.</p>
+    <div class="depth1" v-for="(item, index) in $categoryList" :key="index">
+      <h3>
+        <router-link :to="'/' + item.name">{{ item.name }}</router-link>
+      </h3>
+
+      <ul class="depth2" v-if="item.depth2.length">
+        <li v-for="depth2 in item.depth2" :key="depth2.name">
+          <router-link :to="'/' + item.name + '/' + depth2.name">
+            {{ depth2.name }}
+          </router-link>
+          <ul class="depth3" v-if="depth2.depth3.length">
+            <li v-for="depth3 in depth2.depth3" :key="depth3.name">
+              <router-link :to="'/' + item.name + '/' + depth2.name + '/' + depth3.name">
+                {{ depth3.name }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
@@ -21,3 +30,34 @@ export default {
   name: 'Home'
 }
 </script>
+<style lang="scss">
+@import '@/assets/styles/_base/_variables.scss';
+.views {
+  .depth1 {
+    h3 {
+      margin-bottom: 10px;
+      border-bottom: 1px solid $light-gray;
+      text-transform: capitalize;
+      color: $primary;
+    }
+  }
+  a:hover {
+    color: $primary;
+  }
+  .depth2 {
+    > li {
+      margin-bottom: 10px;
+    }
+  }
+  .depth3 {
+    margin-left: 1em;
+    font-size: 0.9em;
+    li {
+      line-height: 2;
+    }
+    li::before {
+      content: '-';
+    }
+  }
+}
+</style>

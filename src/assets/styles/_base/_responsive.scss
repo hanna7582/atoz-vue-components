@@ -14,7 +14,14 @@
     width: 100%;
     bottom: auto;
     border-right: 0;
-    .search{ margin: 0; }
+    .search{ 
+      margin: 0;
+      .auto-complete{
+        width: auto;
+        right:0.6rem;
+      } 
+    }
+    
     .side-nav-list{ display: none; }
   }
   .views{ 
@@ -22,4 +29,7 @@
     padding: $remD7;
   }
   .chart-container{ width: 100%; }
+  .form-group{
+    grid-template-columns: auto;
+  }
 }

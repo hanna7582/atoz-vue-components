@@ -93,11 +93,36 @@ const category = [
     name: 'templates',
     depth2: [
       {
+        name: 'flex',
+        depth3: [
+          {
+            name: 'basicFlex',
+            depth4: [
+              { en: 'BasicFlex1', ko: '플랙스시작' },
+              { en: 'BasicFlex2', ko: '배치 방향/줄넘김' },
+              { en: 'BasicFlex3', ko: '아이템 크기' },
+              { en: 'BasicFlex4', ko: '아이템 정렬' },
+              { en: 'BasicFlex5', ko: '아이템 순서' }
+            ]
+          }
+        ]
+      },
+      {
         name: 'grid',
         depth3: [
           {
-            name: 'basic',
-            depth4: [{ en: 'BasicLayout1', ko: '기본레이아웃1' }]
+            name: 'basicGrid',
+            depth4: [
+              { en: 'BasicGrid1', ko: '그리드시작' },
+              { en: 'BasicGrid2', ko: '트랙 크기' },
+              { en: 'BasicGrid3', ko: '트랙 크기 자동' },
+              { en: 'BasicGrid4', ko: '셀 간격' },
+              { en: 'BasicGrid5', ko: '셀 영역' },
+              { en: 'BasicGrid6', ko: '셀 영역 이름' },
+              { en: 'BasicGrid7', ko: '셀 자동 배치' },
+              { en: 'BasicGrid8', ko: '아이템 정렬' },
+              { en: 'BasicGrid9', ko: '아이템 순서' }
+            ]
           }
         ]
       }

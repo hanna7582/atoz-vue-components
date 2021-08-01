@@ -17,18 +17,21 @@ input[type="text"]{
   padding: 0 $remD5; 
   border-radius: $remD25; 
   border:$border; 
+  &:read-only{
+    background: $light-gray;
+  }
 }
 textarea{
   resize: none;
   box-sizing: border-box;
   overflow-y: auto;
   width: 100%;
-  height: 200px;
+  max-height: 200px;
   padding: $rem1;
   border: $border;
   border-radius: $remD25;
-  background: $night;
-  color: $white;
+  // background: $night;
+  // color: $white;
 }
 .blind{ 
   position: absolute; 

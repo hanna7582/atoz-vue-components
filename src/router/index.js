@@ -107,13 +107,25 @@ const routes = [
     component: loadView('views/Templates'),
     children: [
       {
+        path: 'flex',
+        name: 'flex',
+        component: loadView('views/flex/FlexView'),
+        children: [
+          {
+            path: 'basicFlex',
+            name: 'basicFlex',
+            component: loadView('views/flex/BasicFlexView')
+          }
+        ]
+      },
+      {
         path: 'grid',
         name: 'grid',
         component: loadView('views/grid/GridView'),
         children: [
           {
-            path: 'basic',
-            name: 'basic',
+            path: 'basicGrid',
+            name: 'basicGrid',
             component: loadView('views/grid/BasicGridView')
           }
         ]
