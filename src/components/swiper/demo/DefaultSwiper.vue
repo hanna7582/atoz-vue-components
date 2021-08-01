@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import 'swiper/components/pagination/pagination.min.css'
-import 'swiper/components/navigation/navigation.min.css'
 import SwiperCore, { Pagination, Navigation } from 'swiper/core'
 SwiperCore.use([Pagination, Navigation])
 export default {
