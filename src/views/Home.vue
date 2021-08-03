@@ -1,7 +1,7 @@
 <template>
   <section class="views">
     <h2>DashBoard</h2>
-    <p>vue에서 사용하는 컴포넌트와 다양한 레이아웃을 제공합니다.</p>
+    <p>vue에서 사용하는 컴포넌트와 다양한 레이아웃을 제공합니다.(업데이트 중)</p>
     <div class="depth1" v-for="(item, index) in $categoryList" :key="index">
       <h3>
         <router-link :to="'/' + item.name">{{ item.name }}</router-link>
