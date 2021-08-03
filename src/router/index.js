@@ -64,6 +64,23 @@ const routes = [
         ]
       },
       {
+        path: 'calendar',
+        name: 'calendar',
+        component: loadView('views/calendar/CalendarView'),
+        children: [
+          {
+            path: 'datepicker',
+            name: 'datepicker',
+            component: loadView('views/calendar/DatepickerView')
+          },
+          {
+            path: 'timepicker',
+            name: 'timepicker',
+            component: loadView('views/calendar/TimepickerView')
+          }
+        ]
+      },
+      {
         path: 'swiper',
         name: 'swiper',
         component: loadView('views/swiper/SwiperView'),
