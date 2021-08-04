@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="routeName === 'excel'">
+    <template v-if="routeName === 'calendar'">
       <ul class="depth3">
         <li v-for="depth3 in categoryList" :key="depth3.name">
           <router-link :to="'/components/calendar/' + depth3.name">

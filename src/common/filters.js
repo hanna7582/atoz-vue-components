@@ -1,5 +1,9 @@
 import Vue from 'vue'
 
+Vue.filter('formatDate', (dateArr, Separator) => {
+  return dateArr.join(Separator)
+})
+
 Vue.filter('filterNumberWithCommas', value => {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 })
