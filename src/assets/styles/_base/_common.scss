@@ -21,3 +21,40 @@
     }
   }
 }
+
+$margin-sizes: 0, 5, 10, 15, 20, 25, 30;
+$padding-sizes: 0, 5, 10, 15, 20, 25, 30;
+@each $size in $margin-sizes {
+  .m#{$size} {
+    margin: $size*1px !important;
+  }
+  .mt#{$size} {
+    margin-top: $size*1px !important;
+  }
+  .mr#{$size} {
+    margin-right: $size*1px !important;
+  }
+  .mb#{$size} {
+    margin-bottom: $size*1px !important;
+  }
+  .ml#{$size} {
+    margin-left: $size*1px !important;
+  }
+}
+@each $size in $padding-sizes {
+  .p#{$size} {
+    padding: $size*1px !important;
+  }
+  .pt#{$size} {
+    padding-top: $size*1px !important;
+  }
+  .pr#{$size} {
+    padding-right: $size*1px !important;
+  }
+  .pb#{$size} {
+    padding-bottom: $size*1px !important;
+  }
+  .pl#{$size} {
+    padding-left: $size*1px !important;
+  }
+}

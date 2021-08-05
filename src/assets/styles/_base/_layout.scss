@@ -213,7 +213,10 @@
     @include flexSpaceBetween();
     .row{
       width: 100%;
-      margin-bottom: $rem1
+      margin-bottom: $rem1;
+      label{
+        margin-right: $remD5;
+      }
     }
   }
   &-description {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="year" v-if="currView === 'year'">
+    <div class="datepicker-container year" v-if="currView === 'year'">
       <div class="datepicker-header">
         <button class="title">{{ currYear }}</button>
         <button class="prev" @click="changeYears('year', 'prev')">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="month" v-if="currView === 'month'">
+    <div class="datepicker-container month" v-if="currView === 'month'">
       <div class="datepicker-header">
         <button class="title" @click="changeView('year')">{{ currYear }}</button>
         <button class="prev" @click="changeYears('month', 'prev')">
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="date" v-if="currView === 'date'">
+    <div class="datepicker-container date" v-if="currView === 'date'">
       <div class="datepicker-header">
         <button class="title" @click="changeView('month')">{{ currYear + ' ' + currMonth }}</button>
         <button class="prev" @click="changeMonth('prev')">
@@ -76,6 +76,7 @@
           :key="item.dateStr"
           :class="classDate(item)"
           :data-date="item.dateStr"
+          @click="changeDate(item)"
         >
           {{ item.dateArray[2] }}
         </div>
@@ -148,8 +149,14 @@ export default {
       }
       this.dateObj = this.$calendar.setDate(this.currYear + '-' + this.currMonth + '-' + 1)
     },
+    changeDate(item) {
+      const [year, month, date] = item.dateArray
+      this.currYear = year
+      this.currMonth = month
+      this.currDate = date
+    },
     classDate(item) {
-      return [{ on: item.dateStr === this.today && item.class == '' }, item.class]
+      return [{ on: item.dateStr === this.today && item.class == null }, item.class]
     }
   },
   created() {
@@ -164,6 +171,9 @@ export default {
     this.currFullDate = fullDate
   },
   watch: {
+    type(type) {
+      this.currView = type || 'year'
+    },
     currYear(year) {
       this.dateObj = this.$calendar.setDate(year + '-' + this.currMonth + '-' + this.currDate)
     },
@@ -178,6 +188,8 @@ export default {
     },
     dateObj(obj) {
       this.dates = obj.dates
+      this.currFullDate = obj.fullDate
+      this.$emit('result', { today: this.today, fullDate: obj.fullDate })
     }
   }
 }

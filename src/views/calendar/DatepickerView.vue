@@ -2,7 +2,7 @@
   <div class="contents">
     <SelectTab :category="category" :active="currentComp" @clickTab="changeTab" />
     <div class="contents-main">
-      <component :is="currentComp" class="datepicker" :style="'height:' + height[currentComp]" />
+      <component :is="currentComp" :style="'height:' + height[currentComp]" />
     </div>
     <div class="contents-description">
       <component :is="currentDesc" class="md" v-highlight />

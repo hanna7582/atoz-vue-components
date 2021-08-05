@@ -21,6 +21,9 @@ input[type="text"]{
     background: $light-gray;
   }
 }
+select{
+  padding: $remD5;
+}
 textarea{
   resize: none;
   box-sizing: border-box;

@@ -1,9 +1,38 @@
+@mixin font(
+  $style: normal,
+  $weight: normal,
+  $size: 16px,
+) {
+  font: {
+    style: $style;
+    weight: $weight;
+    size: $size;
+    family: sans-serif;
+  }
+}
+
 @mixin text-overflow() {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
+// border
+@mixin border($weight:1px, $style:solid, $color:#d6d6d6, $direction:all) {
+  @if ( $direction == top ) {
+    border-top: $weight $style $color
+  } @else if ( $direction == right ) {
+    border-right: $weight $style $color
+  } @else if ( $direction == bottom ) {
+    border-bottom: $weight $style $color
+  } @else if ( $direction == left ) {
+    border-left: $weight $style $color
+  } @else if ( $direction == all ) {
+    border: $weight $style $color
+  }
+}
+
+// position
 @mixin position($xy:'', $position:absolute, $top:initial, $right:initial, $bottom:initial, $left:initial) {
   z-index: 1;
   position: $position;
@@ -26,6 +55,7 @@
   }
 }
 
+// flex
 @mixin flex(){
   display: flex;
   align-items: center;
@@ -62,4 +92,38 @@
   width: $w;
   height: $h;
   background-position: $bg-pos;
+}
+
+// arrow
+@mixin arrowRight($color, $weight) {
+  content: '';
+  display: inline-block;
+  border-top: $weight solid transparent;
+  border-bottom: $weight solid transparent;
+  border-left: $weight solid $color;
+  border-right: 0;
+}
+@mixin arrowTop($color, $weight) {
+  content: '';
+  display: inline-block;
+  border-left: $weight solid transparent;
+  border-right: $weight solid transparent;
+  border-bottom: $weight solid $color;
+  border-top: 0;
+}
+@mixin arrowLeft($color, $weight) {
+  content: '';
+  display: inline-block;
+  border-top: $weight solid transparent;
+  border-bottom: $weight solid transparent;
+  border-right: $weight solid $color;
+  border-left: 0;
+}
+@mixin arrowBottom($color, $weight) {
+  content: '';
+  display: inline-block;
+  border-left: $weight solid transparent;
+  border-right: $weight solid transparent;
+  border-top: $weight solid $color;
+  border-bottom: 0;
 }

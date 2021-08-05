@@ -1,0 +1,84 @@
+@charset 'UTF-8';
+// cursor 
+%cursor-pointer{
+  cursor: pointer;
+}
+%cursor-default{
+  cursor: default;
+}
+%cursor-not-allowed{
+  cursor: not-allowed;
+}
+
+// display
+%flex{
+  display: flex;
+}
+%flex-x {
+  display: flex;
+  justify-content: center;
+}
+%flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+%flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+%flex-y {
+  display: flex;
+  align-items: center;
+}
+%flex-y-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+%flex-y-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+%flex-left {
+  display: flex;
+  justify-content: left;
+}
+%flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+%flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// text
+%text-overflow{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+%text-overflow-2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
+// font
+%font12{
+  @include font($size: 12px);
+}
+%font12-500{
+  @include font($weight: 500, $size: 12px);
+}
+%font12-bold{
+  @include font($weight: bold, $size: 12px);
+}
