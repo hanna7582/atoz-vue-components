@@ -1,7 +1,7 @@
 <template>
   <div class="flex-container">
     <div class="flex-item">
-      <Datepicker :type="currType" class="datepicker" @result="result" />
+      <Datepicker class="datepicker" :setDate="setDate" :type="currType" mode="multi" @result="result" />
     </div>
     <div class="flex-item">
       <div class="row">
@@ -13,6 +13,7 @@
       <div class="row">
         <label for="today">오늘 날짜</label>
         <input type="text" :value="today" readonly />
+        <button class="btn" @click="setToday()">오늘 날짜로 가기</button>
       </div>
       <div class="row">
         <label for="type">선택 날짜</label>
@@ -32,51 +33,28 @@ export default {
   components: {
     Datepicker
   },
-  props: ['currType'],
   data() {
     return {
       type: ['year', 'month', 'date'],
-      // currType: 'year',
+      currType: 'date',
       today: null,
       currDate: null,
-      prev7Date: null
+      prev7Date: null,
+      setDate: null
     }
   },
   methods: {
     result(data) {
       this.today = data.today
-      this.currDate = data.fullDate
+      this.currDate = data.currDate
       this.prev7Date = data.prev7Date
+      this.setDate = data.currDate
+    },
+    setToday() {
+      this.setDate = this.$calendar.today()
     }
   }
 }
 </script>
 
-<style lang="scss">
-.datepicker {
-  width: 300px;
-  height: 300px;
-}
-.flex-container {
-  width: 100%;
-  padding: 0;
-  background: none;
-  flex-wrap: wrap;
-  background: white;
-}
-.flex-item {
-  background: white;
-  border: none;
-  &:nth-child(1) {
-    flex: 0;
-  }
-  &:nth-child(2) {
-    flex: 1;
-  }
-}
-@media screen and (max-width: 767px) {
-  .flex-container {
-    justify-content: center;
-  }
-}
-</style>
+<style lang="scss"></style>

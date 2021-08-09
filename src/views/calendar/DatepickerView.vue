@@ -2,7 +2,7 @@
   <div class="contents">
     <SelectTab :category="category" :active="currentComp" @clickTab="changeTab" />
     <div class="contents-main">
-      <component :is="currentComp" :style="'height:' + height[currentComp]" />
+      <component :is="currentComp" />
     </div>
     <div class="contents-description">
       <component :is="currentDesc" class="md" v-highlight />
@@ -15,23 +15,24 @@ import _ from 'lodash'
 //components
 import SelectTab from '@/components/common/SelectTab.vue'
 import SingleDatepicker from '@/components/calendar/datepicker/SingleDatepicker'
+import MultiDatepicker from '@/components/calendar/datepicker/MultiDatepicker'
 
 //Markdown
 import SingleDatepickerMd from '@/md/calendar/datepicker/SingleDatepicker.md'
+import MultiDatepickerMd from '@/md/calendar/datepicker/MultiDatepicker.md'
 
 export default {
   components: {
     SelectTab,
     SingleDatepicker,
-    SingleDatepickerMd
+    MultiDatepicker,
+    SingleDatepickerMd,
+    MultiDatepickerMd
   },
   data() {
     return {
       currentComp: 'SingleDatepicker',
-      currentDesc: 'SingleDatepickerMd',
-      height: {
-        BarChart1: '300px'
-      }
+      currentDesc: 'SingleDatepickerMd'
     }
   },
   computed: {

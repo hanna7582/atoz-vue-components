@@ -1,16 +1,16 @@
 <template>
   <div class="datepicker-ex">
-    <DatepickerEx currType="year" />
-    <DatepickerEx currType="month" />
-    <DatepickerEx currType="date" />
+    <SingleDatepickerEx currType="year" />
+    <SingleDatepickerEx currType="month" />
+    <SingleDatepickerEx currType="date" />
   </div>
 </template>
 
 <script>
-import DatepickerEx from '@/components/calendar/datepicker/DatepickerEx'
+import SingleDatepickerEx from '@/components/calendar/datepicker/SingleDatepickerEx'
 export default {
   components: {
-    DatepickerEx
+    SingleDatepickerEx
   }
 }
 </script>

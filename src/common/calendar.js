@@ -1,5 +1,6 @@
 import Vue from 'vue'
 const calendar = {
+  // yyyy-mm-dd
   setDate(dateStr) {
     const dateObj = dateStr ? new Date(dateStr) : new Date()
     const year = dateObj.getFullYear()
@@ -24,34 +25,25 @@ const calendar = {
     for (let index = 0; index < 42; index++) {
       if (index < firstDateDay) {
         // 이전달
-        dates.push(
-          // [prevDateYear, prevMonth, prevDate++, 'prev']
-          {
-            dateArray: [prevDateYear, prevMonth, prevDate++],
-            class: 'prev',
-            dateStr: [prevDateYear, this.addZero(prevMonth), this.addZero(prevDate)].join('-')
-          }
-        )
+        dates.push({
+          dateArray: [prevDateYear, prevMonth, prevDate++],
+          class: 'prev',
+          dateStr: [prevDateYear, this.addZero(prevMonth), this.addZero(prevDate)].join('-')
+        })
       } else if (index >= lastDate.getDate() + firstDateDay) {
         // 다음달
-        dates.push(
-          // [nextDateYear, nextMonth, nextDate++, 'next']
-          {
-            dateArray: [nextDateYear, nextMonth, nextDate++],
-            class: 'next',
-            dateStr: [nextDateYear, this.addZero(nextMonth), this.addZero(nextDate)].join('-')
-          }
-        )
+        dates.push({
+          dateArray: [nextDateYear, nextMonth, nextDate++],
+          class: 'next',
+          dateStr: [nextDateYear, this.addZero(nextMonth), this.addZero(nextDate)].join('-')
+        })
       } else {
         // 이번달
-        dates.push(
-          // [year, month, index - firstDateDay + 1]
-          {
-            dateArray: [year, month, index - firstDateDay + 1],
-            class: null,
-            dateStr: [year, this.addZero(month), this.addZero(index - firstDateDay + 1)].join('-')
-          }
-        )
+        dates.push({
+          dateArray: [year, month, index - firstDateDay + 1],
+          class: null,
+          dateStr: [year, this.addZero(month), this.addZero(index - firstDateDay + 1)].join('-')
+        })
       }
     }
     return { fullDate, year, month, date, dates }

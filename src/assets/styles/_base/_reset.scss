@@ -13,8 +13,7 @@ li{ list-style: none; }
 button{ border:0; background: none;}
 input{ appearance: none; }
 input[type="text"]{
-  height: $input-h; 
-  padding: 0 $remD5; 
+  padding: $remD5; 
   border-radius: $remD25; 
   border:$border; 
   &:read-only{

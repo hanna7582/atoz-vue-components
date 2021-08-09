@@ -1,5 +1,5 @@
 # 달력
-시계
+멀티 달력
 
 ## Reference   
 - <a target="_blank" href="#">참고</a>
