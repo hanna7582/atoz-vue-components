@@ -76,7 +76,7 @@
           :key="item.dateStr"
           :class="classDate(item)"
           :data-date="item.dateStr"
-          @click="changeDate(item)"
+          @click="changeDate(item, item.dateStr)"
         >
           {{ item.dateArray[2] }}
         </div>
@@ -98,7 +98,8 @@ export default {
       currMonth: null,
       currDate: null,
       days: null,
-      dates: null
+      dates: null,
+      prev7Date: null
     }
   },
   computed: {
@@ -149,14 +150,24 @@ export default {
       }
       this.dateObj = this.$calendar.setDate(this.currYear + '-' + this.currMonth + '-' + 1)
     },
-    changeDate(item) {
-      const [year, month, date] = item.dateArray
-      this.currYear = year
-      this.currMonth = month
-      this.currDate = date
+    changeDate(item, date) {
+      if (item) {
+        const [year, month, date] = item.dateArray
+        this.currYear = year
+        this.currMonth = month
+        this.currDate = date
+      }
+      this.currFullDate = date
+      const currDate = new Date(date)
+      currDate.setDate(currDate.getDate() - 6)
+      this.prev7Date = this.$calendar.setDate(currDate).fullDate
     },
     classDate(item) {
-      return [{ on: item.dateStr === this.today && item.class == null }, item.class]
+      return [
+        { today: item.dateStr === this.today && item.class == null },
+        { on: item.dateStr <= this.currFullDate && item.dateStr >= this.prev7Date },
+        item.class
+      ]
     }
   },
   created() {
@@ -188,8 +199,10 @@ export default {
     },
     dateObj(obj) {
       this.dates = obj.dates
-      this.currFullDate = obj.fullDate
-      this.$emit('result', { today: this.today, fullDate: obj.fullDate })
+    },
+    currFullDate(date) {
+      this.changeDate(null, date)
+      this.$emit('result', { today: this.today, fullDate: date, prev7Date: this.prev7Date })
     }
   }
 }

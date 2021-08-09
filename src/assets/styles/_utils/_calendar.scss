@@ -44,14 +44,21 @@
       &:hover {
         background: #fbd2bd;
       }
-      &.on {
-        background-color: #f26721;
-        color: #fff;
-      }
       &.prev,
       &.next{
         color: $light-gray
-      }      
+      }   
+      &.on {
+        background-color:$primary;
+        color: $white;
+      }
+      &.today{
+        font-weight: 800;
+        color: $primary;
+      }
+      &.on.today{
+        color: $black;
+      }
     }
     .day{
       display: flex;
