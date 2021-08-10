@@ -7,7 +7,7 @@
       <div class="row">
         <label for="type">시작 타입</label>
         <select v-model="currType" id="type">
-          <option v-for="item in type" :key="item" :value="item">{{ item }}</option>
+          <option v-for="item in types" :key="item" :value="item">{{ item }}</option>
         </select>
       </div>
       <div class="row">
@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      type: ['year', 'month', 'date'],
+      types: ['year', 'month', 'date'],
       currType: 'date',
       today: null,
       currDate: null,

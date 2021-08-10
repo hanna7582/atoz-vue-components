@@ -7,19 +7,19 @@
       <div class="row">
         <label for="type">시작 타입</label>
         <select v-model="currType" id="type">
-          <option v-for="item in type" :key="item" :value="item">{{ item }}</option>
+          <option v-for="item in types" :key="item" :value="item">{{ item }}</option>
         </select>
       </div>
       <div class="row">
-        <label for="today">오늘 날짜</label>
+        <label>오늘 날짜</label>
         <input type="text" :value="today" readonly />
       </div>
       <div class="row">
-        <label for="type">선택 날짜</label>
+        <label>선택 날짜</label>
         <input type="text" :value="currDate" readonly />
       </div>
       <div class="row">
-        <label for="type">이전 7일 ~ 선택 날짜</label>
+        <label>이전 7일 ~ 선택 날짜</label>
         <input type="text" :value="prev7Date + ' ~ ' + currDate" readonly />
       </div>
     </div>
@@ -32,11 +32,11 @@ export default {
   components: {
     Datepicker
   },
-  props: ['currType'],
+  props: ['type'],
   data() {
     return {
-      type: ['year', 'month', 'date'],
-      // currType: 'year',
+      types: ['year', 'month', 'date'],
+      currType: null,
       today: null,
       currDate: null,
       prev7Date: null
@@ -48,6 +48,9 @@ export default {
       this.currDate = data.currDate
       this.prev7Date = data.prev7Date
     }
+  },
+  created() {
+    this.currType = this.type
   }
 }
 </script>
