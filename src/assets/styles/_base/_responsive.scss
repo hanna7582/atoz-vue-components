@@ -1,6 +1,6 @@
 @media screen and (max-width:1200px){
   .contents-main {
-    @include flexWrap();
+    @include flex-y-wrap();
   }
   .chart, .example, .data-editor { width: 100%; }
   .jsoneditor-container.min-box{ height: auto !important; }

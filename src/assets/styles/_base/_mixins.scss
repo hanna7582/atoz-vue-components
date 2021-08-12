@@ -58,26 +58,53 @@
 // flex
 @mixin flex(){
   display: flex;
+}
+@mixin flex-x(){
+  @extend %flex-x;
+}
+@mixin flex-around(){
+  display: flex;
+  justify-content: space-around;
+}
+@mixin flex-between(){
+  display: flex;
+  justify-content: space-between;
+}
+@mixin flex-y(){
+  display: flex;
   align-items: center;
 }
-@mixin flexCenter(){
+@mixin flex-y-around(){
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin flex-y-between(){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-center(){
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
 }
-@mixin flexSpaceBetweenCenter(){
+@mixin flex-left(){
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: left;
 }
-@mixin flexSpaceBetween(){
+@mixin flex-end(){
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-@mixin flexWrap(){
+@mixin flex-wrap(){
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+}
+@mixin flex-y-wrap(){
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 @mixin btn($padding, $radius, $font-size, $bg, $color){
   padding: $padding;

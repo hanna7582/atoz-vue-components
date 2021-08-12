@@ -30,34 +30,4 @@ export default {
   name: 'Home'
 }
 </script>
-<style lang="scss">
-@import '@/assets/styles/_base/_variables.scss';
-.views {
-  .depth1 {
-    h3 {
-      margin-bottom: 10px;
-      border-bottom: 1px solid $light-gray;
-      text-transform: capitalize;
-      color: $primary;
-    }
-  }
-  a:hover {
-    color: $primary;
-  }
-  .depth2 {
-    > li {
-      margin-bottom: 10px;
-    }
-  }
-  .depth3 {
-    margin-left: 1em;
-    font-size: 0.9em;
-    li {
-      line-height: 2;
-    }
-    li::before {
-      content: '-';
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

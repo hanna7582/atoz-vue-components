@@ -1,5 +1,14 @@
-# 멀티 달력
-- 현재 월 기준 이전/다음 월을 함께 보여주는 달력
+# 전환 달력
+- 년 / 월 / 일 단계별로 전환되는 달력
+
+## 달력 전환하기
+- 년 달력이 보이는 경우 
+  - 하단 9개의 년도 중 선택시 월 달력으로 전환
+- 월 달력이 보이는 경우 
+  - 하단 12개의 월 중 선택시 일 달력으로 전환
+  - 상단 년도 선택시 년 달력으로 전환
+- 일 달력이 보이는 경우 
+  - 상단 년월 선택시 월 달력으로 전환 
 
 ## Demo Code HTML <button class="btn-toggle-code" id="toggle-code1">Toggle</button>
 ```html
@@ -7,19 +16,11 @@
   <div class="datepicker-ex">
     <div class="flex-container">
       <div class="flex-item">
-        <TransformDatepicker
-          :setDate="setDate"
-          :type="currType"
-          mode="multi"
-          @result="result"
-          @changeView="changeView"
-        />
+        <TransformDatepicker :type="currType" @result="result" />
       </div>
       <div class="flex-item">
         <Select label="시작 타입" :value="currType" :options="types" @changeType="changeType" />
-        <InputText label="오늘 날짜" :value="today" :readonly="true">
-          <button slot="button" class="btn" @click="setToday()">오늘 날짜로 가기</button>
-        </InputText>
+        <InputText label="오늘 날짜" :value="today" :readonly="true" />
         <InputText label="선택 날짜" :value="currDate" :readonly="true" />
         <InputText label="이전 7일 ~ 선택 날짜" :value="prev7Date + ' ~ ' + currDate" :readonly="true" />
       </div>
@@ -42,11 +43,10 @@ export default {
   data() {
     return {
       types: ['year', 'month', 'date'],
-      currType: 'date',
+      currType: 'year',
       today: null,
       currDate: null,
-      prev7Date: null,
-      setDate: null
+      prev7Date: null
     }
   },
   methods: {
@@ -54,16 +54,9 @@ export default {
       this.today = data.today
       this.currDate = data.currDate
       this.prev7Date = data.prev7Date
-      this.setDate = data.currDate
-    },
-    setToday() {
-      this.setDate = this.$calendar.today()
     },
     changeType(type) {
       this.currType = type
-    },
-    changeView() {
-      this.setDate = null
     }
   }
 }

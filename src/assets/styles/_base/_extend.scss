@@ -57,6 +57,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+%flex-y-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
 // text
 %text-overflow{

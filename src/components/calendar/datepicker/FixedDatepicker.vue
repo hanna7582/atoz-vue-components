@@ -1,5 +1,5 @@
 <template>
-  <div :class="mode">
+  <div class="datepicker fixed" :class="mode">
     <div class="datepicker-container date" v-if="mode === 'multi' && prevDateObj">
       <div class="datepicker-header">
         <button class="title">{{ prevDateObj.year + ' ' + prevDateObj.month }}</button>
@@ -23,12 +23,12 @@
     <div class="datepicker-container year" v-if="type === 'year'">
       <div class="datepicker-header">
         <button class="title">{{ dateObj.year }}</button>
-        <button class="prev" @click="changeYears('year', 'prev')">
+        <button class="prev" @click="changeYear('year', 'prev')">
           <span class="material-icons-outlined">
             navigate_before
           </span>
         </button>
-        <button class="next" @click="changeYears('year', 'next')">
+        <button class="next" @click="changeYear('year', 'next')">
           <span class="material-icons-outlined">
             navigate_next
           </span>
@@ -40,7 +40,7 @@
           v-for="year in years"
           :key="year"
           :class="{ on: year === dateObj.year }"
-          @click="changeView('month', year)"
+          @click="changeYearMonth('month', year)"
         >
           {{ year }}
         </div>
@@ -48,13 +48,13 @@
     </div>
     <div class="datepicker-container month" v-if="type === 'month'">
       <div class="datepicker-header">
-        <button class="title" @click="changeView('year')">{{ dateObj.year }}</button>
-        <button class="prev" @click="changeYears('month', 'prev')">
+        <button class="title">{{ dateObj.year }}</button>
+        <button class="prev" @click="changeYear('month', 'prev')">
           <span class="material-icons-outlined">
             navigate_before
           </span>
         </button>
-        <button class="next" @click="changeYears('month', 'next')">
+        <button class="next" @click="changeYear('month', 'next')">
           <span class="material-icons-outlined">
             navigate_next
           </span>
@@ -66,7 +66,7 @@
           v-for="month in 12"
           :key="'month' + month"
           :class="{ on: month === dateObj.month }"
-          @click="changeView('date', month)"
+          @click="changeYearMonth('date', month)"
         >
           {{ month }}
         </div>
@@ -74,7 +74,7 @@
     </div>
     <div class="datepicker-container date" v-if="type === 'date'">
       <div class="datepicker-header">
-        <button class="title" @click="changeView('month')">{{ dateObj.year + ' ' + dateObj.month }}</button>
+        <button class="title">{{ dateObj.year + ' ' + dateObj.month }}</button>
         <button class="prev" @click="changeMonth('prev')">
           <span class="material-icons-outlined">
             navigate_before
@@ -156,9 +156,9 @@ export default {
     }
   },
   methods: {
-    changeView(type, value) {
+    changeYearMonth(type, value) {
       if (type === 'month') {
-        if (value) this.currYear = value
+        this.currYear = value
       } else if (type === 'date') {
         this.currMonth = value
       }
@@ -169,7 +169,7 @@ export default {
         '-' +
         this.$calendar.addZero(this.currDate)
     },
-    changeYears(type, arrow) {
+    changeYear(type, arrow) {
       if (type === 'year') {
         this.currYear = arrow === 'prev' ? this.currYear - 9 : this.currYear + 9
       } else if (type === 'month') {
@@ -201,7 +201,7 @@ export default {
       this.selectDate = date
       const currDate = new Date(date)
       currDate.setDate(currDate.getDate() - 6)
-      this.prev7Date = this.$calendar.setDate(currDate).fullDate
+      this.prev7Date = this.$calendar.datepicker(currDate).fullDate
     },
     classDate(item) {
       return [
@@ -213,7 +213,7 @@ export default {
     }
   },
   created() {
-    this.dateObj = this.setDate ? this.$calendar.setDate(this.setDate) : this.$calendar.setDate()
+    this.dateObj = this.setDate ? this.$calendar.datepicker(this.setDate) : this.$calendar.datepicker()
     this.days = this.setDays || ['일', '월', '화', '수', '목', '금', '토']
     const { fullDate, year, month, date } = this.dateObj
     this.selectDate = fullDate
@@ -223,34 +223,31 @@ export default {
   },
   watch: {
     currYear(year) {
-      this.dateObj = this.$calendar.setDate(year + '-' + this.currMonth + '-' + this.currDate)
-      // this.$emit('result', { today: this.today, currDate: this.dateObj })
+      this.dateObj = this.$calendar.datepicker(year + '-' + this.currMonth + '-' + this.currDate)
     },
     currMonth(month) {
       const monthStr = month > 9 ? month : '0' + month
-      this.dateObj = this.$calendar.setDate(this.currYear + '-' + monthStr + '-' + this.currDate)
-      // this.$emit('result', { today: this.today, currDate: this.dateObj })
+      this.dateObj = this.$calendar.datepicker(this.currYear + '-' + monthStr + '-' + this.currDate)
     },
     currDate(date) {
       const dateStr = date > 9 ? date : '0' + date
-      this.dateObj = this.$calendar.setDate(this.currYear + '-' + this.currMonth + '-' + dateStr)
+      this.dateObj = this.$calendar.datepicker(this.currYear + '-' + this.currMonth + '-' + dateStr)
     },
     dateObj(obj) {
-      this.dates = obj.dates
       const prevMonth = obj.fullDate ? new Date(obj.fullDate) : new Date()
       prevMonth.setMonth(prevMonth.getMonth() - 1)
-      this.prevDateObj = this.$calendar.setDate(prevMonth)
+      this.prevDateObj = this.$calendar.datepicker(prevMonth)
 
       const nextMonth = obj.fullDate ? new Date(obj.fullDate) : new Date()
       nextMonth.setMonth(nextMonth.getMonth() + 1)
-      this.nextDateObj = this.$calendar.setDate(nextMonth)
+      this.nextDateObj = this.$calendar.datepicker(nextMonth)
     },
     selectDate(date) {
       this.changeDate(null, date)
       this.$emit('result', { today: this.today, currDate: this.dateObj, prev7Date: this.prev7Date })
     },
     setDate(date) {
-      this.dateObj = date ? this.$calendar.setDate(date) : this.$calendar.setDate()
+      this.dateObj = date ? this.$calendar.datepicker(date) : this.$calendar.datepicker()
     }
   }
 }

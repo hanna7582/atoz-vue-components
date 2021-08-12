@@ -1,7 +1,7 @@
 <template>
   <div class="contents">
     <SelectTab :category="category" :active="currentComp" @clickTab="changeTab" />
-    <div class="contents-main">
+    <div class="contents-main templates">
       <component :is="currentComp" />
     </div>
     <div class="contents-description">

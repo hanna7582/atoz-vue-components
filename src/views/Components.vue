@@ -30,7 +30,7 @@
 export default {
   name: 'Components',
   computed: {
-    routeName(){
+    routeName() {
       return this.$route.name
     },
     subName() {
@@ -39,29 +39,8 @@ export default {
     componentsName() {
       return this.$route.matched.length !== 1 ? this.$route.matched.map(item => item.name).splice(1) : ['']
     }
-  },
+  }
 }
 </script>
 
-<style lang="scss">
-@import '@/assets/styles/_base/_variables.scss';
-.views {
-  a:hover {
-    color: $primary;
-  }
-  .depth2 {
-    > li {
-      margin-bottom: 10px;
-    }
-  }
-  .depth3 {
-    margin-left: 1em;
-    font-size: 0.9em;
-    li {
-      line-height: 2;
-    }
-    li::before {
-      content: '-';
-    }
-  }
-}
+<style lang="scss"></style>

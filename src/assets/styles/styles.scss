@@ -8,10 +8,13 @@
 @import '_base/_common.scss';
 @import '_base/_layout.scss';
 @import '_base/_theme.scss';
-@import '_base/_responsive.scss';
+@import '_base/_theme.scss';
 
 @import '_utils/_md.scss';
 @import '_utils/_jsonEditor.scss';
 @import '_utils/_swiper.scss';
 @import '_utils/_calendar.scss';
+@import '_utils/_templates.scss';
+
+@import '_base/_responsive.scss';
 

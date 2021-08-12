@@ -54,10 +54,11 @@ const category = [
           {
             name: 'datepicker',
             depth4: [
-              { en: 'SingleDatepicker', ko: '달력' },
+              { en: 'TransformDatepicker', ko: '전환 달력' },
+              { en: 'FixedDatepicker', ko: '고정 달력' },
               { en: 'MultiDatepicker', ko: '멀티 달력' },
-              { en: 'WeeksDatepicker', ko: '주차 달력' },
               { en: 'WeekDatepicker', ko: '주간 달력' }
+              // { en: 'WeeksDatepicker', ko: '주차 달력' },
             ]
           },
           {

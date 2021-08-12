@@ -1,20 +1,19 @@
 .datepicker-ex{
+  width: 100%;
   .row{
-    @include flex();
+    @include flex-y();
     button{
       margin-left: 5px;
     }
   }
   .flex-container {
-    width: 100%;
-    padding: 0;
-    background: none;
-    flex-wrap: wrap;
-    background: white;
+    @include flex-wrap();
+    margin-bottom: 10px;
+    background: #fff;
   }
-  .flex-item {
-    background: white;
-    border: none;
+  .flex-item{
+    padding: 10px;
+    color: $black;
   }
 }
 .datepicker {
@@ -101,7 +100,8 @@
       &:nth-child(7){color:$blue}
     }
   }
-  .date .datepicker-body{
+  .date .datepicker-body,
+  .week .datepicker-body{
     grid-template-columns: repeat(7, 1fr);
   }
   &.multi .datepicker-container .datepicker-body{
@@ -117,12 +117,20 @@
     cursor: default;
   }
   &.multi .datepicker-container:not(.datepicker-container:nth-child(2)) .title:hover,
+  .week .title:hover,
   .year .title:hover{
       color: inherit;
       cursor: default;
   }
+  &.fixed .title:hover{
+    color: inherit;
+    cursor: default;
+  }
+  .week{
+    width: 600px;
+    height: 200px;
+  }
 }
-
 
 @media screen and (max-width:1200px){
   .datepicker{

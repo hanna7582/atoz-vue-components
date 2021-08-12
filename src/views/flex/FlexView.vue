@@ -25,7 +25,6 @@ export default {
       return this.$route.name
     },
     categoryList() {
-      let arr = console.log(arr)
       return this.$categoryList
         .filter(depth1 => {
           return depth1.name == 'templates'

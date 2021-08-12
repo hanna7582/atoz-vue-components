@@ -1,5 +1,5 @@
 <template>
-  <div :class="mode">
+  <div class="datepicker" :class="mode">
     <div class="datepicker-container date" v-if="mode === 'multi' && prevDateObj">
       <div class="datepicker-header">
         <button class="title">{{ prevDateObj.year + ' ' + prevDateObj.month }}</button>
@@ -200,7 +200,7 @@ export default {
       this.selectDate = date
       const currDate = new Date(date)
       currDate.setDate(currDate.getDate() - 6)
-      this.prev7Date = this.$calendar.setDate(currDate).fullDate
+      this.prev7Date = this.$calendar.datepicker(currDate).fullDate
     },
     classDate(item) {
       return [
@@ -213,7 +213,7 @@ export default {
   },
   created() {
     this.currView = this.type || 'year'
-    this.dateObj = this.setDate ? this.$calendar.setDate(this.setDate) : this.$calendar.setDate()
+    this.dateObj = this.setDate ? this.$calendar.datepicker(this.setDate) : this.$calendar.datepicker()
     this.days = this.setDays || ['일', '월', '화', '수', '목', '금', '토']
     const { fullDate, year, month, date } = this.dateObj
     this.selectDate = fullDate
@@ -226,32 +226,32 @@ export default {
       this.currView = type || 'year'
     },
     currYear(year) {
-      this.dateObj = this.$calendar.setDate(year + '-' + this.currMonth + '-' + this.currDate)
+      this.dateObj = this.$calendar.datepicker(year + '-' + this.currMonth + '-' + this.currDate)
     },
     currMonth(month) {
       const monthStr = month > 9 ? month : '0' + month
-      this.dateObj = this.$calendar.setDate(this.currYear + '-' + monthStr + '-' + this.currDate)
+      this.dateObj = this.$calendar.datepicker(this.currYear + '-' + monthStr + '-' + this.currDate)
     },
     currDate(date) {
       const dateStr = date > 9 ? date : '0' + date
-      this.dateObj = this.$calendar.setDate(this.currYear + '-' + this.currMonth + '-' + dateStr)
+      this.dateObj = this.$calendar.datepicker(this.currYear + '-' + this.currMonth + '-' + dateStr)
     },
     dateObj(obj) {
-      this.dates = obj.dates
       const prevMonth = obj.fullDate ? new Date(obj.fullDate) : new Date()
       prevMonth.setMonth(prevMonth.getMonth() - 1)
-      this.prevDateObj = this.$calendar.setDate(prevMonth)
+      this.prevDateObj = this.$calendar.datepicker(prevMonth)
 
       const nextMonth = obj.fullDate ? new Date(obj.fullDate) : new Date()
       nextMonth.setMonth(nextMonth.getMonth() + 1)
-      this.nextDateObj = this.$calendar.setDate(nextMonth)
+      this.nextDateObj = this.$calendar.datepicker(nextMonth)
+      this.$emit('changeView')
     },
     selectDate(date) {
       this.changeDate(null, date)
       this.$emit('result', { today: this.today, currDate: date, prev7Date: this.prev7Date })
     },
     setDate(date) {
-      this.dateObj = date ? this.$calendar.setDate(date) : this.$calendar.setDate()
+      this.dateObj = date ? this.$calendar.datepicker(date) : this.$calendar.datepicker()
     }
   }
 }

@@ -14,25 +14,35 @@
 import _ from 'lodash'
 //components
 import SelectTab from '@/components/common/SelectTab.vue'
-import SingleDatepicker from '@/components/calendar/datepicker/SingleDatepicker'
-import MultiDatepicker from '@/components/calendar/datepicker/MultiDatepicker'
+import TransformDatepicker from '@/components/calendar/datepicker/TransformDatepickerEx'
+import FixedDatepicker from '@/components/calendar/datepicker/FixedDatepickerEx'
+import MultiDatepicker from '@/components/calendar/datepicker/MultiDatepickerEx'
+import WeekDatepicker from '@/components/calendar/datepicker/WeekDatepickerEx'
+// import WeeksDatepicker from '@/components/calendar/datepicker/WeeksDatepickerEx'
 
 //Markdown
-import SingleDatepickerMd from '@/md/calendar/datepicker/SingleDatepicker.md'
+import TransformDatepickerMd from '@/md/calendar/datepicker/TransformDatepicker.md'
+import FixedDatepickerMd from '@/md/calendar/datepicker/FixedDatepicker.md'
 import MultiDatepickerMd from '@/md/calendar/datepicker/MultiDatepicker.md'
+import WeekDatepickerMd from '@/md/calendar/datepicker/WeekDatepicker.md'
+// import WeeksDatepickerMd from '@/md/calendar/datepicker/WeeksDatepicker.md'
 
 export default {
   components: {
     SelectTab,
-    SingleDatepicker,
+    TransformDatepicker,
+    FixedDatepicker,
     MultiDatepicker,
-    SingleDatepickerMd,
-    MultiDatepickerMd
+    WeekDatepicker,
+    TransformDatepickerMd,
+    FixedDatepickerMd,
+    MultiDatepickerMd,
+    WeekDatepickerMd
   },
   data() {
     return {
-      currentComp: 'SingleDatepicker',
-      currentDesc: 'SingleDatepickerMd'
+      currentComp: 'TransformDatepicker',
+      currentDesc: 'TransformDatepickerMd'
     }
   },
   computed: {
