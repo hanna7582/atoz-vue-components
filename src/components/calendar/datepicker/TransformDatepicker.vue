@@ -244,7 +244,7 @@ export default {
       const nextMonth = obj.fullDate ? new Date(obj.fullDate) : new Date()
       nextMonth.setMonth(nextMonth.getMonth() + 1)
       this.nextDateObj = this.$calendar.datepicker(nextMonth)
-      this.$emit('changeView')
+      this.$emit('changeSetDate', obj.fullDate)
     },
     selectDate(date) {
       this.changeDate(null, date)

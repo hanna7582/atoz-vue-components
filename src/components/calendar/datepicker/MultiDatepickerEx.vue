@@ -7,7 +7,7 @@
           :type="currType"
           mode="multi"
           @result="result"
-          @changeView="changeView"
+          @changeSetDate="changeSetDate"
         />
       </div>
       <div class="flex-item">
@@ -55,8 +55,8 @@ export default {
     changeType(type) {
       this.currType = type
     },
-    changeView() {
-      this.setDate = null
+    changeSetDate(date) {
+      this.setDate = date
     }
   }
 }
