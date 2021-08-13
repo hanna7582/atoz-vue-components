@@ -71,7 +71,7 @@ export default {
       return [
         { disabled: item.dateStr > this.today },
         { today: item.dateStr === this.today && item.class == null },
-        { on: item.dateStr <= this.selectDate && item.dateStr >= this.prev7Date }
+        { on: item.dateStr == this.selectDate }
       ]
     }
   },
