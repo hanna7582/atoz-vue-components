@@ -129,6 +129,11 @@
   .week{
     width: 600px;
     height: 200px;
+    .day{
+      &:nth-child(1){color:inherit;}
+      &:nth-child(6){color:$blue;}
+      &:nth-child(7){color:$red;}
+    }
   }
 }
 
