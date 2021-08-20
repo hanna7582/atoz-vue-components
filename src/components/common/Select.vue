@@ -1,8 +1,10 @@
 <template>
   <div class="row">
     <label>{{ label }}</label>
-    <select v-model="currType">
-      <option v-for="item in options" :key="item" :value="item">{{ item }}</option>
+    <select v-model="currValue">
+      <option v-for="(item, i) in options" :key="i" :value="item">
+        {{ item.name || item }}
+      </option>
     </select>
   </div>
 </template>
@@ -12,12 +14,12 @@ export default {
   props: ['label', 'value', 'options'],
   data() {
     return {
-      currType: this.value
+      currValue: this.value
     }
   },
   watch: {
-    currType(type) {
-      this.$emit('changeType', type)
+    currValue(value) {
+      this.$emit('changeValue', value)
     }
   }
 }

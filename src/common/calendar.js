@@ -73,19 +73,19 @@ const calendar = {
     }
     return { fullDate, year, month, date, dates }
   },
-  weekDatepicker(arrow, startDate) {
+  weekDatepicker(startDay, startDate, arrow) {
     /**
-     * @params arrow 이전/다음
+     * @params startDay 시작요일
      * @params startDate 시작날짜
+     * @params arrow 이전/다음
      */
     const dates = []
-    // 월요일부터 시작
-    let changeWeekDate = 1
-    // 월요일부터 시작이므로 +8, -6
+    // 일요일 시작
+    let changeWeekDate = startDay || 0
     if (arrow == 'next') {
-      changeWeekDate = 8
+      changeWeekDate = 7 + changeWeekDate
     } else if (arrow == 'prev') {
-      changeWeekDate = -6
+      changeWeekDate = -7 + changeWeekDate
     }
 
     const now = startDate ? new Date(startDate) : new Date()
