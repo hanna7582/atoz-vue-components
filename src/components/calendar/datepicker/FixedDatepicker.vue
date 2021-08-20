@@ -5,7 +5,7 @@
         <button class="title">{{ prevDateObj.year + ' ' + prevDateObj.month }}</button>
       </div>
       <div class="datepicker-body">
-        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex">
+        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex" :class="classDay(day)">
           {{ day }}
         </div>
         <div
@@ -87,7 +87,7 @@
         </button>
       </div>
       <div class="datepicker-body">
-        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex">
+        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex" :class="classDay(day)">
           {{ day }}
         </div>
         <div
@@ -107,7 +107,7 @@
         <button class="title">{{ nextDateObj.year + ' ' + nextDateObj.month }}</button>
       </div>
       <div class="datepicker-body">
-        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex">
+        <div class="day" v-for="(day, dayIndex) in days" :key="'days' + dayIndex" :class="classDay(day)">
           {{ day }}
         </div>
         <div
@@ -202,6 +202,19 @@ export default {
       const currDate = new Date(date)
       currDate.setDate(currDate.getDate() - 6)
       this.prev7Date = this.$calendar.datepicker(currDate).fullDate
+    },
+    classDay(day) {
+      console.log(day)
+      let className = ''
+      switch (day) {
+        case '일':
+          className = 'sun'
+          break
+        case '토':
+          className = 'sat'
+          break
+      }
+      return className
     },
     classDate(item) {
       return [

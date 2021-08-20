@@ -5,7 +5,7 @@
         <WeeksDatepicker :type="currType" @result="result" />
       </div>
       <div class="flex-item">
-        <Select label="시작 타입" :value="currType" :options="types" @changeType="changeType" />
+        <Select label="시작 타입" :value="currType" :options="types" @changeValue="changeValue" />
         <InputText label="오늘 날짜" :value="today" :readonly="true" />
         <InputText label="선택 날짜" :value="currDate" :readonly="true" />
         <InputText label="이전 7일 ~ 선택 날짜" :value="prev7Date + ' ~ ' + currDate" :readonly="true" />
@@ -39,7 +39,7 @@ export default {
       this.currDate = data.currDate
       this.prev7Date = data.prev7Date
     },
-    changeType(type) {
+    changeValue(type) {
       this.currType = type
     }
   }

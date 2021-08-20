@@ -12,11 +12,11 @@
           :type="currType"
           mode="multi"
           @result="result"
-          @changeView="changeView"
+          @changeSetDate="changeSetDate"
         />
       </div>
       <div class="flex-item">
-        <Select label="시작 타입" :value="currType" :options="types" @changeType="changeType" />
+        <Select label="시작 타입" :value="currType" :options="types" @changeValue="changeValue" />
         <InputText label="오늘 날짜" :value="today" :readonly="true">
           <button slot="button" class="btn" @click="setToday()">오늘 날짜로 가기</button>
         </InputText>
@@ -59,11 +59,11 @@ export default {
     setToday() {
       this.setDate = this.$calendar.today()
     },
-    changeType(type) {
+    changeValue(type) {
       this.currType = type
     },
-    changeView() {
-      this.setDate = null
+    changeSetDate(date) {
+      this.setDate = date
     }
   }
 }
