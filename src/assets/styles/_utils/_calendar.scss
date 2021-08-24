@@ -96,8 +96,8 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      &:nth-child(1){color:$red}
-      &:nth-child(7){color:$blue}
+      &.sat{color:$blue}
+      &.sun{color:$red}
     }
   }
   .date .datepicker-body,
@@ -140,6 +140,7 @@
     &.multi .datepicker-container:nth-child(2) .datepicker-body{
       border:0;
     }
+    .week{ width: 500px; }
   }
 }
 
@@ -147,4 +148,5 @@
   .datepicker-ex .flex-container {
     justify-content: center;
   }
+  .datepicker .week{ width: calc(100vw - 50px); }
 }
