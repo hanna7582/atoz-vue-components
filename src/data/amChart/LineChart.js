@@ -106,25 +106,25 @@ export default {
       category: '06월 1주차',
       item1: 86400,
       item2: 43200,
-      item2Date: '2020년 05월'
+      item2Date: '05월 4주차'
     },
     {
       category: '06월 2주차',
       item1: 54060,
       item2: 32400,
-      item2Date: '2020년 06월'
+      item2Date: '06월 3주차'
     },
     {
       category: '06월 3주차',
       item1: 43800,
       item2: 64800,
-      item2Date: '2020년 07월'
+      item2Date: '06월 2주차'
     },
     {
       category: '06월 4주차',
       item1: 54000,
       item2: 0,
-      item2Date: '2020년 08월'
+      item2Date: '06월 3주차'
     }
   ]
 }
